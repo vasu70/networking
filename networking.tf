@@ -7,11 +7,18 @@
  }
 
 
-resource "aws_subnet" "subnet-1" {
+resource "aws_subnet""subnet-1" {
   vpc_id = aws_vpc.main-vpc.id
   cidr_block = "10.22.0.0/24"
   map_public_ip_on_launch  = "true"
   tags = {
     Name = "vasu-subnet-1"
   }
+}
+
+resource "aws_internet_gateway" "igw" {
+ vpc_id = aws_vpc.main-vpc.id
+ tags = {
+   Name = "vasu-igw"
+ }
 }
